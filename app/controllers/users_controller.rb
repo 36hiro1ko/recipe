@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def show
-    @user= User.find(params[:id]);
+    if logged_in?
+      @user= User.find(params[:id]);
+    else
+      flash[:warning] = "このページを閲覧するためにはログインが必要です"
+      redirect_to login_path
+    end
   end
   
   def new
