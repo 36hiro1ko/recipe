@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   def correct_user
     @user=User.find(params[:id])
     if current_user?(@user) != true
+      session[:user_id] = nil #クッキーの削除
       redirect_to login_path
     end
   end
