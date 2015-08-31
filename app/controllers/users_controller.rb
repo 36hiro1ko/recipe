@@ -42,6 +42,8 @@ class UsersController < ApplicationController
     end  
   end
   
+
+  
   private
   
   def user_params
@@ -49,14 +51,21 @@ class UsersController < ApplicationController
                                  :password_confirmation,:profile,:address)
   end
   
+  #ログインしているユーザーが本人なのかどうかを確認する
+  def correct_user
+    correct_user?(params[:id])
+  end
+  
   #このアクセスはユーザー本人なのかどうかを確認するメソッド
   #ユーザー情報の編集を本人意外行えないようにするための処置
-  def correct_user
-    @user=User.find(params[:id])
-    if current_user?(@user) != true
-      session[:user_id] = nil #クッキーの削除
-      redirect_to login_path
-    end
-  end
+
+
+  # def correct_user
+  #   @user=User.find(params[:id])
+  #   if current_user?(@user) != true
+  #     session[:user_id] = nil #クッキーの削除
+  #     redirect_to login_path
+  #   end
+  # end
   
 end
