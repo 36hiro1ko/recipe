@@ -1,4 +1,16 @@
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
+<div class="text center">
+  <h1>
+    <%= gravatar_for @user %>
+    <%= @user.name %>
+  </h1>
+  <hr>
+  <p class="lead">
+    <i class="glyphicon glyphicon-envelope"></i>　<%= @user.email %>
+  </p>
+  <p>出身地： 
+    <%= @user.address %>
+  </p>
+  <p>
+    <%= @user.profile %>
+  <p>
+</div>
