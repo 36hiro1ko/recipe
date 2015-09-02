@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     @user=User.find(id)
     if current_user?(@user) != true
       session[:user_id] = nil #クッキーの削除
+      session[:forwarding_url] = nil 
       redirect_to login_path
     end
   end

@@ -8,9 +8,14 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:info] = "logged in as #{@user.name}"
-      redirect_to @user
+      if session[:forwarding_url] != nil
+        #本来アクセスしようとしたurlに移動する
+        redirect_to session[:forwarding_url]
+      else
+        redirect_to root_path
+      end
     else
-      flash[:danger] = 'invalid email/password combination'
+      flash[:danger] = 'メールもしくはパスワードが間違っています'
       render 'new'
     end
   end
