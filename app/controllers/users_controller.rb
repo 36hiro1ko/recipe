@@ -43,6 +43,18 @@ class UsersController < ApplicationController
     end  
   end
   
+  #フォロー一覧
+  def followings
+    @user = User.find(params[:id])
+    @follwing_users = @user.following_users
+  end
+  
+  #フォロワー一覧
+  def followers
+    @user = User.find(params[:id])
+    @follower_users = @user.follower_users
+  end
+  
 
   
   private
@@ -60,13 +72,5 @@ class UsersController < ApplicationController
   #このアクセスはユーザー本人なのかどうかを確認するメソッド
   #ユーザー情報の編集を本人意外行えないようにするための処置
 
-
-  # def correct_user
-  #   @user=User.find(params[:id])
-  #   if current_user?(@user) != true
-  #     session[:user_id] = nil #クッキーの削除
-  #     redirect_to login_path
-  #   end
-  # end
   
 end

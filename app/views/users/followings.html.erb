@@ -1,0 +1,13 @@
+<%= gravatar_for @user %>
+<%=  @user.name %>
+<h1>フォロー</h1>
+
+フォロー数:<%= @user.following_users.count %>
+
+
+<% @follwing_users.each do |follwing_user| %>
+        <li>
+          <%= gravatar_for follwing_user %>
+          <%= follwing_user.name %>
+        </li>
+<% end %> 
