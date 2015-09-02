@@ -18,9 +18,15 @@
     
     <%= render 'follow_form' if logged_in? %>
     
-    フォロー<%= %>
+    フォロー
+    <a href="<%= followings_path(@user) %>">
+     <%= @user.following_users.count %>
+    </a>
     
     フォロワー
+    <a href="<%= followers_path(@user) %>">
+      <%= @user.follower_users.count %>
+    </a>
 
   </aside>
   <div class="col-md-8">
