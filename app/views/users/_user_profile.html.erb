@@ -16,15 +16,22 @@
     <%= @user.profile %>
     <p>
   </div>
+  
+  <div class="col-sm-4">
+    <a href="<%= user_path(@user) %>">
+    <p><font size="20px"><%= @user.microposts.count %></font></p>
+    </a>
+    <p><small>microposts</small></p>
+  </div>
     
-  <div class="col-sm-6">
+  <div class="col-sm-4">
     <a href="<%= followings_path(@user) %>">
     <p><font size="20px"><%= @user.following_users.count %></font></p>
     </a>
     <p><small>フォロー</small></p>
   </div>
   
-  <div class="col-sm-6">
+  <div class="col-sm-4">
     <a href="<%= followers_path(@user) %>">
     <p><font size="20px"><%= @user.follower_users.count %></font></p>
     </a>
