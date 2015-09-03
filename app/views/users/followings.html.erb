@@ -1,13 +1,24 @@
-<%= gravatar_for @user %>
-<%=  @user.name %>
-<h1>フォロー</h1>
+<div class="row">
 
-フォロー数:<%= @user.following_users.count %>
+  <aside class="col-md-4"> 
+   <%= render "user_profile" %>    
+  </aside>
+  
+  
+  <div class="col-md-8">
+    <% if @follwing_users.any? %>
+      <h3>フォロー中 (<%= @follwing_users.count %>)</h3>
+      <ol class="follower">
+        <% @follwing_users.each do |follwing_user| %>  
 
-
-<% @follwing_users.each do |follwing_user| %>
-        <li>
-          <%= gravatar_for follwing_user %>
-          <%= follwing_user.name %>
+        <li id="follwing-<%= follwing_user.id %>">
+          <%= link_to gravatar_for(follwing_user, size: 50), follwing_user %>
+          <span class="user"><%= link_to follwing_user.name, follwing_user %><br></span>
+          <span class="profile"><%= follwing_user.profile %></span>
         </li>
-<% end %> 
+        <% end %> 
+      </ol>      
+    <% end %>
+  </div>
+  
+</div>

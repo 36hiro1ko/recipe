@@ -50,6 +50,10 @@ p {
   line-height: 1.7em;
 }
 
+
+
+
+
 /* header */
 
 #logo {
@@ -135,6 +139,7 @@ aside {
   }
 }
 
+
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -177,10 +182,13 @@ aside {
   }
 }
 
-aside {
+aside { 
   textarea {
     height: 100px;
     margin-bottom: 5px;
+  }
+  .userprofile{
+    width: 80%;
   }
 }
 
@@ -190,3 +198,48 @@ span.picture {
     border: 0;
   }
 }
+
+
+#follow_form{
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+a:hover
+{
+    text-decoration:none;
+}
+
+
+.info{
+  padding: 10px;
+  height: 100px;
+}
+
+/* フォロー、フォロワー　*/
+.follower {
+  list-style: none;
+  padding: 0;
+  height: 40px;
+  
+  li {
+    padding: 10px 0px;
+    border-top: 1px solid #e8e8e8;
+    height: 100px;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .profile{
+    display: block;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+

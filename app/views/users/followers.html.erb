@@ -1,12 +1,25 @@
-<%= gravatar_for @user %>
-<%=  @user.name %>
-<h1>フォロワー</h1>
+<div class="row">
 
-フォロワー数:<%= @user.follower_users.count %>
-
-<% @follower_users.each do |follower_user| %>
-        <li>
-          <%= gravatar_for follower_user %>
-          <%= follower_user.name %>
+  <aside class="col-md-4">
+   <%= render "user_profile" %> 
+  </aside>
+  
+  
+  <div class="col-md-8">
+    <% if @follower_users.any? %>
+      <h3>フォロワー (<%= @follower_users.count %>)</h3>
+      <ol class="follower">
+        <% @follower_users.each do |follower_user| %>     
+        <li id="follower-<%= follower_user.id %>">
+          <%= link_to gravatar_for(follower_user, size: 50), follower_user %>
+          <span class="user"><%= link_to follower_user.name, follower_user %><br></span>
+          <span class="profile"><%= follower_user.profile %></span>
         </li>
-<% end %> 
+      <% end %> 
+      </ol>
+    <% end %>
+  </div>
+  
+</div>
+
+

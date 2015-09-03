@@ -1,34 +1,10 @@
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <p class="lead">
-      <i class="glyphicon glyphicon-envelope"></i>　<%= @user.email %>
-    </p>
-    <p>出身地： 
-    <%= @user.address %>
-    </p>
-    <p>
-    <%= @user.profile %>
-    <p>
-    
-    <%= render 'follow_form' if logged_in? %>
-    
-    フォロー
-    <a href="<%= followings_path(@user) %>">
-     <%= @user.following_users.count %>
-    </a>
-    
-    フォロワー
-    <a href="<%= followers_path(@user) %>">
-      <%= @user.follower_users.count %>
-    </a>
 
+  <aside class="col-md-4"> 
+    <%= render "user_profile" %>       
   </aside>
+  
+  
   <div class="col-md-8">
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
@@ -37,4 +13,5 @@
       </ol>
     <% end %>
   </div>
+  
 </div>

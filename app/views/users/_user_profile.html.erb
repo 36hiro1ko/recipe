@@ -1,0 +1,36 @@
+<div class="userprofile text-center">
+    
+  <section class="user_info">
+    <%= gravatar_for @user %>
+    <div class="content">
+      <p class="text-left"><strong><%= @user.name %></strong></p>
+      <p class="text-left small">
+        <i class="glyphicon glyphicon-envelope"></i> <%= @user.email %><br>
+        <%= @user.address %>
+      </p>
+    </div>
+  </section>
+      
+  <div class="info text-left">
+    <p>
+    <%= @user.profile %>
+    <p>
+  </div>
+    
+  <div class="col-sm-6">
+    <a href="<%= followings_path(@user) %>">
+    <p><font size="20px"><%= @user.following_users.count %></font></p>
+    </a>
+    <p><small>フォロー</small></p>
+  </div>
+  
+  <div class="col-sm-6">
+    <a href="<%= followers_path(@user) %>">
+    <p><font size="20px"><%= @user.follower_users.count %></font></p>
+    </a>
+    <p><small>フォロワー</small></p>
+  </div>
+      
+  <%= render 'follow_form' if logged_in? %>
+    
+</div><!-- .userprofile text-center -->
