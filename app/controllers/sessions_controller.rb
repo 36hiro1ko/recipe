@@ -10,7 +10,9 @@ class SessionsController < ApplicationController
       flash[:info] = "logged in as #{@user.name}"
       if session[:forwarding_url] != nil
         #本来アクセスしようとしたurlに移動する
-        redirect_to session[:forwarding_url]
+        ##redirect_to session[:forwarding_url]
+        redirect_to root_path
+        
       else
         redirect_to root_path
       end
