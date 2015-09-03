@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'followings/:id', to: 'users#followings', as: 'followings'
   get 'followers/:id', to: 'users#followers', as: 'followers'
   
+  get 'users_all', to: 'users#users_all', as: 'users_all'
+  
   resources :users
   resources :sessions, only:[:new, :create, :destroy]
   resources :microposts

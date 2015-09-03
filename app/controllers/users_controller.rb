@@ -51,6 +51,11 @@ class UsersController < ApplicationController
       @follower_users = @user.follower_users
   end
   
+  #ユーザー一覧
+  def users_all
+    @users=User.all
+  end
+  
   
   #ログインしているかどうか確認し、ログインしていない場合はログイン画面に戻す
   def logged_in_ok?

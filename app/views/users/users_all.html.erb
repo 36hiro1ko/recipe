@@ -1,0 +1,21 @@
+<div class="row">
+
+  <aside class="col-md-4"> 
+        
+  </aside>
+  
+  
+  <div class="col-md-8">
+     <h3>ユーザー一覧</h3>
+      <ol class="follower">
+        <% @users.each do |user| %>     
+        <li id="user-<%= user.id %>">
+          <%= link_to gravatar_for(user, size: 50), user %>
+          <span class="user"><%= link_to user.name, user %><br></span>
+          <span class="profile"><%= user.profile %></span>
+        </li>
+      <% end %> 
+      </ol>
+  </div>
+  
+</div>
