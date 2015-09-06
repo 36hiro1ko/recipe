@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901072014) do
+ActiveRecord::Schema.define(version: 20150906105648) do
+
+  create_table "mailboxes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "recipient_id"
+    t.text     "message"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "mailboxes", ["user_id", "recipient_id", "created_at"], name: "index_mailboxes_on_user_id_and_recipient_id_and_created_at"
+  add_index "mailboxes", ["user_id"], name: "index_mailboxes_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
     t.integer  "user_id"
