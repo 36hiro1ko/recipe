@@ -1,9 +1,20 @@
-<%= form_for(@mailbox) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= hidden_field_tag :recipient_id, @recipient_id %>
-  <%= f.hidden_field :recipient_id, :value => @recipient_id %>
-  <div class="field">
-    <%= f.text_area :message, placeholder: "200文字以内でメッセージを入力してください" %>
+<div class="row">
+<h3><i class="glyphicon glyphicon-envelope"></i>
+ ショートメッセージ作成フォーム</h3>
+<hr>
+
+
+  <div class="col-md-6">
+  <p>200文字以内でショートメールを作成してください</p>
+    <%= form_for(@mailbox) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= hidden_field_tag :recipient_id, @recipient_id %>
+      <%= f.hidden_field :recipient_id, :value => @recipient_id %>
+      <div class="field">
+        <%= f.text_area :message, placeholder: "200文字以内でメッセージを入力してください", :size => "60x10" %>
+      </div>
+      <%= f.submit "送信", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <%= f.submit "送信", class: "btn btn-primary" %>
-<% end %>
+  
+</div>

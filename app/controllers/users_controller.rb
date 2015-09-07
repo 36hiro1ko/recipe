@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   
   #ユーザー一覧
   def users_all
-    @users=User.all
+    @users=User.all.page params[:page]
   end
   
   

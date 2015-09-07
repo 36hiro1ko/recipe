@@ -1,6 +1,6 @@
 <% if current_user != @user %>
   <%= form_tag(sendmail_path, method: "get") do %>
     <%= hidden_field_tag :recipient_id, @user.id %>
-    <%= submit_tag("ダイレクトメッセージを送る", class: "btn btn-primary") %>
+    <%= submit_tag("ショートメールを送る", class: "btn btn-primary") %>
   <% end %>
 <% end %>

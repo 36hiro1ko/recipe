@@ -198,3 +198,11 @@ ja:
     name:   なまえ
     age:   年齢
     body:  メッセージ
+  
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."

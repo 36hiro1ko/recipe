@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   def home
     if logged_in?
         @micropost = current_user.microposts.build
-        @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc)
+        @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc).page params[:page]
     end
   end
   
@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
   # --受信メールボックス 
   def inbox
     if logged_in?
-      @feed_mails = current_user.feed_mails.includes(:user).order(created_at: :desc)
+      @feed_mails = current_user.feed_mails.includes(:user).order(created_at: :desc).page params[:page]
     end
   end
   

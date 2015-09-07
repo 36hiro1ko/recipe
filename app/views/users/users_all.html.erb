@@ -6,7 +6,10 @@
   
   
   <div class="col-md-8">
-     <h3>ユーザー一覧</h3>
+    <h3>ユーザー一覧</h3>
+    <%= paginate @users %>
+    
+    <div class="userlist">
       <ol class="follower">
         <% @users.each do |user| %>     
         <li id="user-<%= user.id %>">
@@ -14,8 +17,10 @@
           <span class="user"><%= link_to user.name, user %><br></span>
           <span class="profile"><%= user.profile %></span>
         </li>
-      <% end %> 
+        <% end %> 
       </ol>
+    </div>
+
   </div>
   
 </div>
