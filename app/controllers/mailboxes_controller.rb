@@ -11,11 +11,7 @@ class MailboxesController < ApplicationController
       redirect_to root_path
     end
   end
-  
-  
-  ##Mailbox.where(recipient_id: 2)
-  
-  
+
   private
   def mailbox_params
     params.require(:mailbox).permit(:message, :recipient_id)

@@ -8,8 +8,9 @@
     　
       <% @feed_mails.each do |msg| %>
         <div class="panel panel-default">
+        
           <div class="panel-heading">
-            <p>FROM:  <%= msg.user_id %></p>
+            <p>FROM: <%= link_to msg.user.name, msg.user %> </p>
             <p>日時:  <%= msg.created_at %></p>
           </div>
         
@@ -22,6 +23,7 @@
               <% end %> 
             </div>         
           </div><!-- /.panel-body -->
+          
         </div><!-- /.panel panel=default -->
       <% end %> 
      

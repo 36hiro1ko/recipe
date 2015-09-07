@@ -6,6 +6,7 @@
       
         <li><%= link_to "Home", root_path %></li>
         <% if logged_in? %>
+        <li><a><%= current_user.name %>さんログイン中</a></li>
         <li><%= link_to "inbox", inbox_path %></li>
         <li><%= link_to "Users", users_all_path %></li>
           <li class="dropdown">
