@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'users_all', to: 'users#users_all', as: 'users_all'
   
   get 'sendmail', to: 'static_pages#sendmail'
+  get 'inbox', to: 'static_pages#inbox'
   
   resources :users
   resources :sessions, only:[:new, :create, :destroy]

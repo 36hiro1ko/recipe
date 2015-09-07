@@ -14,5 +14,12 @@ class StaticPagesController < ApplicationController
     end
   end
   
+  # --受信メールボックス 
+  def inbox
+    if logged_in?
+      @feed_mails = current_user.feed_mails.includes(:user).order(created_at: :desc)
+    end
+  end
+  
   
 end

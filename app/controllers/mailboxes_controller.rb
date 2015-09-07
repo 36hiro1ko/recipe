@@ -12,6 +12,10 @@ class MailboxesController < ApplicationController
     end
   end
   
+  
+  ##Mailbox.where(recipient_id: 2)
+  
+  
   private
   def mailbox_params
     params.require(:mailbox).permit(:message, :recipient_id)

@@ -21,7 +21,15 @@ class User < ActiveRecord::Base
   has_many :follower_users, through: :follower_relationships, source: :follower
   
   
+  # ---- ダイレクトメール ---------------
   has_many :mailboxes
+  
+  # 受信メール一覧を取得
+  def feed_mails
+     Mailbox.where(recipient_id: [self.id])
+  end
+
+  # -------------------------------------
     
     # 他のユーザーをフォローする
   def follow(other_user)
