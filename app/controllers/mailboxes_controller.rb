@@ -3,8 +3,9 @@ class MailboxesController < ApplicationController
   
   def create
     @mailbox = current_user.mailboxes.build(mailbox_params)
+    @mailbox.read = 0 #既読フラグに0を代入
     if @mailbox.save
-      flash[:success] = "ダイレクトメールを送りました"
+      flash[:success] = "ショートメールを送りました"
       redirect_to root_path
     else
       flash[:success] = "メールの送信に失敗しました"

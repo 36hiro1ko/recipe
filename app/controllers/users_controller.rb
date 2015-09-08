@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   before_action :correct_user, only:[:edit, :update]
-  before_action :logged_in_ok?, only:[:show, :followers, :followings]
+  before_action :logged_in_ok?, only:[:show, :followers, :followings, :users_all,:sendmail, :inbox]
   
   def show
       @user= User.find(params[:id])
@@ -54,6 +54,24 @@ class UsersController < ApplicationController
   #ユーザー一覧
   def users_all
     @users=User.all.page params[:page]
+  end
+  
+  # --受信メールボックス 
+  def inbox 
+    @feed_mails = current_user.feed_mails.includes(:user).order(created_at: :desc).page params[:page]
+    #既読フラグ、1なら既読、それ以外は未読
+    @feed_mails.each do |msg|
+        msg.read = 1
+        msg.save!
+    end     
+  end
+  
+  # --ショートメール送信フォーム --
+  def sendmail
+    if logged_in?
+     @recipient_id = params[:recipient_id]
+     @mailbox = current_user.mailboxes.build
+    end
   end
   
   

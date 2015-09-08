@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
   def feed_mails
      Mailbox.where(recipient_id: [self.id])
   end
-
   # -------------------------------------
     
     # 他のユーザーをフォローする
