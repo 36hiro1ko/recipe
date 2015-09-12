@@ -1,7 +1,29 @@
 <%= form_for(@micropost) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
-  </div>
+  <dl>
+    <dd>
+      <div class="field">
+        <%= f.text_area :content, placeholder: "Compose new micropost...", class: "validate required", :size => "10x5" %>
+      </div>
+    </dd>
+  
+    <div style="margin-bottom:50px;">
+      <%= f.file_field :image, style: "display: none;", id: "file_input", class: "form-control"  %>
+      <%= f.hidden_field :image_cache %>
+      <div style="width:100%;float:left;margin-right:10px;" class="input-group">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" onclick="$('#file_input').click();">
+              <i class="glyphicon glyphicon-folder-open"></i>
+          </button>
+        </span>
+        <input id="image" type="text" class="form-control" placeholder="select file..." disabled>
+      </div>
+    </div>
+  
+  </dl>
+
   <%= f.submit "Post", class: "btn btn-primary" %>
+  
+  <%= render 'shared/error_messages', object: f.object %> 
+  
 <% end %>
+

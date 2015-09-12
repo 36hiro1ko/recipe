@@ -13,6 +13,13 @@ gem 'rails_12factor', group: :production
 #ページネーション
 gem 'kaminari'
 
+#imageupload
+gem 'fog'
+gem 'carrierwave'
+gem 'rmagick', require: 'RMagick'
+
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
