@@ -11,13 +11,11 @@ $(function() {
           $(this).filter(".required").each(function(){
               if($(this).val()==""){
                   $(this).parent().prepend("<p class='error'>必須項目です</p>")
-                  $(this).css('border','#FF0000 double')
+                  $(this).css("border","3px solid red")
                   flag = 1;
                   return false; 
               }
           })  
-          
-           
       })
 
       if (flag) {

@@ -3,9 +3,9 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
-  storage :file
+  #storage :file
   # S3 strage
-  #storage :fog
+  storage :fog
 
   process convert: 'jpg'
 
