@@ -19,7 +19,7 @@ gem 'kaminari'
 # gem 'rmagick', require: 'RMagick'
 gem 'fog'
 gem 'carrierwave'
-gem 'RMagick'
+gem 'rmagick', :require => 'RMagick' 
 
 
 # Use SCSS for stylesheets
