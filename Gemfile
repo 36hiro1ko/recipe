@@ -14,10 +14,12 @@ gem 'rails_12factor', group: :production
 gem 'kaminari'
 
 #imageupload
+# gem 'fog'
+# gem 'carrierwave'
+# gem 'rmagick', require: 'RMagick'
 gem 'fog'
 gem 'carrierwave'
-gem 'rmagick', require: 'RMagick'
-
+gem ‘rmagick’
 
 
 # Use SCSS for stylesheets
