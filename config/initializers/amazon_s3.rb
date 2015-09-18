@@ -8,6 +8,6 @@ CarrierWave.configure do |config|
 
   config.fog_directory = 'hiro1image' #if Rails.env.production?
   #config.fog_directory = 'hiro1image' if Rails.env.development?
-  
+
 
 end

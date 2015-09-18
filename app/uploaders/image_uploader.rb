@@ -12,6 +12,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+  
+  def cache_dir
+     "#{Rails.root}/tmp/uploads"
+  end
 
   # thumb バージョン(width 400px x height 200px)
   version :thumb do
@@ -23,9 +27,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  # 変換したファイルのファイル名の規則
-  def filename
-    "#{Time.now.strftime('%Y%m%d%H%M%S')}.jpg"
-  end
+  # # 変換したファイルのファイル名の規則
+  # def filename
+  #   "#{Time.now.strftime('%Y%m%d%H%M%S')}.jpg"
+  # end
 
 end
