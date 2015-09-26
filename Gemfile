@@ -19,7 +19,7 @@ gem 'kaminari'
 # gem 'rmagick', require: 'RMagick'
 gem 'fog'
 gem 'carrierwave'
-gem 'rmagick', :require => 'RMagick' 
+#gem 'rmagick', :require => 'RMagick' 
 
 
 # Use SCSS for stylesheets
@@ -45,23 +45,18 @@ gem 'bootstrap-sass'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'rmagick', require: 'RMagick'
   gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  
-  gem 'pry-rails'
-  
+  gem 'spring'  
+  gem 'pry-rails' 
 end
 
+group :production do
+  gem 'rmagick', :require => 'RMagick' 
+  # If you catch the error, you need this command.
+  # sudo apt-get install ImageMagick
+  # sudo apt-get install libmagickwand-dev
+end
