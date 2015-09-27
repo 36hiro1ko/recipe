@@ -21,6 +21,8 @@ gem 'fog'
 gem 'carrierwave'
 #gem 'rmagick', :require => 'RMagick' 
 
+gem 'instagram'
+gem 'omniauth-twitter'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -47,11 +49,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 
 group :development, :test do
-  gem 'byebug'
   gem 'rmagick', require: 'RMagick'
   gem 'web-console', '~> 2.0'
   gem 'spring'  
   gem 'pry-rails' 
+  gem 'pry-byebug'
 end
 
 group :production do

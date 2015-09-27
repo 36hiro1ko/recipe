@@ -83,7 +83,7 @@ class UsersController < ApplicationController
       redirect_to login_path
     end
   end
-   
+  
   private
   
   def user_params

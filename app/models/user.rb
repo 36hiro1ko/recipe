@@ -50,4 +50,26 @@ class User < ActiveRecord::Base
     Micropost.where(user_id: following_user_ids + [self.id])
   end
   
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+    unless user
+      user = User.create(
+        uid:      auth.uid,
+        name:     auth.info.nickname,
+        image_url: auth.info.image,
+        provider: auth.provider,
+        email:    User.dummy_email(auth),
+        password_digest: "#{auth.uid}#{auth.provider}" #パスワードは適当に
+      )
+    end
+
+    user
+  end
+
+  private
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
+  
 end

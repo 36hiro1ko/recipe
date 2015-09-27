@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910144433) do
+ActiveRecord::Schema.define(version: 20150927033552) do
 
   create_table "mailboxes", force: :cascade do |t|
     t.integer  "user_id"
@@ -55,8 +55,23 @@ ActiveRecord::Schema.define(version: 20150910144433) do
     t.datetime "updated_at",      null: false
     t.string   "address"
     t.string   "profile"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "image_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
+
+  create_table "words", force: :cascade do |t|
+    t.string   "word"
+    t.string   "image"
+    t.string   "detial_page_url"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "instagram_id"
+  end
+
+  add_index "words", ["instagram_id"], name: "index_words_on_instagram_id"
 
 end

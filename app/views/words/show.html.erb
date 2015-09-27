@@ -1,0 +1,22 @@
+<h1>英単語イメージ検索</h1>
+
+<div class="">
+<div class="search">
+  <%= form_tag words_path , method: :get do %>
+    <%= text_field_tag :q , params[:q], placeholder: "キーワードを入力", required: true %>
+    <%= submit_tag "アイテムを検索", name: nil , class: "btn btn-success", data: { disable_with: "検索中..."} %>
+  <% end %>
+</div>
+
+<% if @instagrams.present? %>
+  <% @instagrams.each do |instagram| %>
+    <%= link_to instagram.link, :target => "_blank" do %>
+      <%= image_tag(instagram.images.low_resolution.url) %>
+    <% end %>
+  <% end %>
+<% elsif params[:q].present? %>
+  <div class="alert alert-danger">
+    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+    検索したアイテムはありません
+  </div>
+<% end %>

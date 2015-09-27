@@ -20,4 +20,5 @@ module SessionsHelper
     user == current_user #userとcurrent_userが一致していない場合にfalseを返す
   end
   
+  
 end

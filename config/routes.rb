@@ -14,11 +14,15 @@ Rails.application.routes.draw do
   get 'inbox', to: 'users#inbox'
   get 'sendmail', to: 'users#sendmail'
   
+  get 'words', to: 'words#show'
+  
   resources :users
   resources :sessions, only:[:new, :create, :destroy]
   resources :microposts
   resources :relationships, only: [:create, :destroy]
   
   resources :mailboxes, only: [:create]
+
+  get "/auth/:provider/callback", to: "sessions#omniauth_callbacks"
 
 end

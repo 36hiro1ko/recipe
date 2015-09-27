@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Microposts", root_path, id: "logo" %>
+    <%= link_to "cutie Note", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
       
@@ -12,6 +12,12 @@
         <%= link_to inbox_path do %>                                                                                              
           <i class="glyphicon glyphicon-envelope"></i> 
           <span style="color: red;"><%= raw mailcount_for(current_user) %></span>
+        <% end %> 
+        </li>
+        
+        <li>
+        <%= link_to words_path do %>                                                                                              
+          <i class="glyphicon glyphicon-book"></i> 
         <% end %> 
         </li>
                
