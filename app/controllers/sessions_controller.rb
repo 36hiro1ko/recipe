@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def omniauth_callbacks
     # profiderとuidでuserレコードを検索。存在しなければ、新たに作成する
     user = User.find_for_oauth(request.env['omniauth.auth'])
-    binding.pry
+    #binding.pry
     
     # userレコードが既に保存されているか
     if user.persisted?

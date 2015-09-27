@@ -4,9 +4,13 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
+  validates :email, presence: true,
+                    length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+                    uniqueness: { case_sensitive: false },
+                    on: :create
+  
+
   has_secure_password
   
   # 「dependent: :destroy」userが削除された場合に一緒に削除する
@@ -19,6 +23,7 @@ class User < ActiveRecord::Base
                                     foreign_key: "followed_id",
                                     dependent:   :destroy
   has_many :follower_users, through: :follower_relationships, source: :follower
+  
   
   
   # ---- ダイレクトメール ---------------
@@ -58,18 +63,14 @@ class User < ActiveRecord::Base
         name:     auth.info.nickname,
         image_url: auth.info.image,
         provider: auth.provider,
-        email:    User.dummy_email(auth),
-        password_digest: "#{auth.uid}#{auth.provider}" #パスワードは適当に
+        # twitterではemailを取得できないので、適当に一意のemailを生成
+        email:   SecureRandom.urlsafe_base64 + "@example.com",
+        # twitterではpasswordが取得できないので、適当にパスワードを生成
+        password_digest:  SecureRandom.urlsafe_base64
       )
     end
 
     user
   end
-
-  private
-
-  def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
-  end
-  
+ 
 end
