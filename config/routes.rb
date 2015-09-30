@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   
   resources :mailboxes, only: [:create]
 
+  # for Twitter login
   get "/auth/:provider/callback", to: "sessions#omniauth_callbacks"
+  # fot Rakuten Recipe
+  get "new", to: "words#new"
+  
 
 end

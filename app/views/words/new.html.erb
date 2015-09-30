@@ -1,0 +1,10 @@
+<% if @recipes.present? %>
+
+   <% @recipes["result"].each do |recipe| %>
+     タイトル：<%= link_to recipe['recipeTitle'], recipe['recipeUrl'] %><br>
+    <%= image_tag recipe['foodImageUrl'] %><br>
+    <%= image_tag recipe['recipeDescription'] %>
+   <% end %>
+<% end %>
+
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927033552) do
+ActiveRecord::Schema.define(version: 20150928044614) do
 
   create_table "mailboxes", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,6 +35,19 @@ ActiveRecord::Schema.define(version: 20150927033552) do
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "recipeId"
+    t.string   "recipeTitle"
+    t.string   "recipeUrl"
+    t.string   "mediumImageUrl"
+    t.string   "recipeMaterial"
+    t.string   "recipeIndication"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "recipes", ["recipeId"], name: "index_recipes_on_recipeId"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
